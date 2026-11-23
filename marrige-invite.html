@@ -1,0 +1,670 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Khola &amp; Zohaib Nikkah</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Great+Vibes&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: an emerald night with a faint eight-point star lattice, lanterns hanging from the top edge, and one gilded terminal card at the centre. Gold is the only loud colour; blush appears only in petals. */
+:root {
+  --bg: #04100b;
+  --panel: rgba(8, 28, 21, 0.78);
+  --line: rgba(228, 185, 90, 0.34);
+  --line-soft: rgba(228, 185, 90, 0.16);
+  --fg: #e6f3ec;
+  --dim: #7fa592;
+  --gold: #e4b95a;
+  --gold-hi: #f6e3a1;
+  --gold-lo: #b98a2e;
+  --ok: #7de3ab;
+  --ink: #08150f;
+  --blush: #f2b5c3;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --script: "Great Vibes", "Snell Roundhand", "Brush Script MT", cursive;
+  --arabic: "Amiri", "Noto Naskh Arabic", "Times New Roman", serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  position: relative;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.65;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 120% 90% at 50% 45%, transparent 35%, rgba(2, 8, 5, 0.85) 100%),
+    radial-gradient(ellipse 70% 55% at 50% 38%, rgba(30, 110, 78, 0.42), transparent 72%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23e4b95a' stroke-opacity='.11' stroke-width='1'%3E%3Crect x='20' y='20' width='32' height='32'/%3E%3Crect x='20' y='20' width='32' height='32' transform='rotate(45 36 36)'/%3E%3Ccircle cx='36' cy='36' r='6'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  padding-block: 1.25rem 2rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (max-width: 430px) { body { font-size: 13.5px; } }
+
+#sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+/* ---------- lanterns ---------- */
+.lamps { position: absolute; inset: 0 0 auto 0; height: 0; z-index: 1; pointer-events: none; }
+.lamp {
+  position: absolute;
+  top: 0;
+  width: clamp(38px, 6vw, 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: 50% 0;
+  animation: swing 5.5s ease-in-out infinite alternate;
+}
+.lamp .cord { width: 1px; height: var(--cord, 30px); background: linear-gradient(var(--gold-lo), var(--gold)); opacity: 0.7; }
+.lamp svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 0 14px rgba(255, 190, 90, 0.5)); }
+.lamp.l1 { left: max(3vw, calc(env(safe-area-inset-left, 0px) + 10px)); --cord: 26px; }
+.lamp.l2 { right: max(3vw, calc(env(safe-area-inset-right, 0px) + 10px)); --cord: 60px; animation-delay: -2.4s; animation-duration: 6.4s; }
+.lamp.l3, .lamp.l4 { display: none; width: 44px; }
+.lamp.l3 { left: 13vw; --cord: 70px; animation-delay: -1.2s; animation-duration: 6s; }
+.lamp.l4 { right: 13vw; --cord: 20px; animation-delay: -3.6s; animation-duration: 5s; }
+@media (min-width: 900px) { .lamp.l3, .lamp.l4 { display: flex; } }
+@keyframes swing { from { transform: rotate(-3.5deg); } to { transform: rotate(3.5deg); } }
+.flame { animation: flicker 2.8s ease-in-out infinite alternate; }
+@keyframes flicker { from { opacity: 0.8; } to { opacity: 1; } }
+
+/* ---------- stage + card ---------- */
+.stage {
+  position: relative;
+  z-index: 2;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 5.5rem;
+}
+@media (min-width: 900px) { .stage { padding-top: 2.5rem; } }
+
+.card {
+  position: relative;
+  width: min(100%, 44rem);
+  min-width: 0;
+  background: var(--panel);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 90px rgba(228, 185, 90, 0.08);
+  animation: cardin 1s ease both;
+}
+@keyframes cardin { from { opacity: 0; transform: translateY(14px) scale(0.98); } to { opacity: 1; transform: none; } }
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  pointer-events: none;
+}
+.corner { position: absolute; width: 30px; height: 30px; color: var(--gold); opacity: 0.85; pointer-events: none; z-index: 2; }
+.corner svg { width: 100%; height: 100%; display: block; }
+.corner.tl { top: 10px; left: 10px; }
+.corner.tr { top: 10px; right: 10px; transform: scaleX(-1); }
+.corner.bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+.corner.br { bottom: 10px; right: 10px; transform: scale(-1, -1); }
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 2.6rem 0.7rem 1.1rem;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--dim);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+}
+.dots { display: flex; gap: 6px; }
+.dots i { display: block; width: 9px; height: 9px; border-radius: 50%; }
+.dots i:nth-child(1) { background: #b5584f; }
+.dots i:nth-child(2) { background: var(--gold); }
+.dots i:nth-child(3) { background: var(--ok); }
+.bar svg { width: 16px; height: 16px; color: var(--gold); flex: none; }
+.bar span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.body { padding: 1.3rem 1.5rem 1.7rem; min-height: 24rem; }
+@media (max-width: 430px) { .body { padding: 1.1rem 1.1rem 1.5rem; } }
+.line { white-space: pre-wrap; overflow-wrap: anywhere; min-height: 1.65em; }
+.dim { color: var(--dim); }
+.ok { color: var(--ok); }
+.gold { color: var(--gold); }
+.prompt { color: var(--ok); }
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(228, 185, 90, 0.7);
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.reveal { animation: rise 0.7s ease both; }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+
+.goldtext {
+  color: var(--gold);
+  background: linear-gradient(110deg, var(--gold-lo) 0%, var(--gold-hi) 28%, #d9a93f 52%, var(--gold-hi) 78%, var(--gold-lo) 100%);
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 8s linear infinite;
+}
+@keyframes shimmer { to { background-position: -240% 0; } }
+
+.bismillah {
+  font-family: var(--arabic);
+  font-size: clamp(1.8rem, 6.5vw, 2.6rem);
+  text-align: center;
+  direction: rtl;
+  line-height: 2.1;
+  padding-block: 0.2em;
+  margin: 0.8rem 0 0.4rem;
+}
+.names { text-align: center; margin: 0.4rem 0 0.2rem; }
+.names .n {
+  display: block;
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: clamp(2.7rem, 12.5vw, 4.4rem);
+  line-height: 1.15;
+  padding-inline: 0.1em;
+  overflow-wrap: anywhere;
+}
+.names .amp { display: block; font-family: var(--arabic); font-style: italic; font-size: 1.7rem; line-height: 1.2; color: var(--blush); }
+
+.orn { display: flex; align-items: center; gap: 0.8rem; margin: 1rem auto 1.1rem; max-width: 20rem; }
+.orn i { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
+.orn i:last-child { background: linear-gradient(270deg, transparent, var(--gold)); }
+.orn b { width: 9px; height: 9px; background: var(--gold); transform: rotate(45deg); box-shadow: 0 0 10px rgba(228, 185, 90, 0.7); flex: none; }
+
+.facts { margin: 0.3rem 0 0.9rem; display: grid; gap: 0.35rem; }
+.row { display: flex; align-items: baseline; gap: 0.6rem; min-width: 0; }
+.row dt { color: var(--dim); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.74rem; flex: none; }
+.row .lead { flex: 1; min-width: 1rem; border-bottom: 1px dotted rgba(228, 185, 90, 0.35); transform: translateY(-4px); }
+.row dd { margin: 0; text-align: right; overflow-wrap: anywhere; min-width: 0; }
+
+.choices { display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: center; margin-top: 1rem; }
+.slot { display: inline-block; }
+.btn {
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  min-height: 46px;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  background: rgba(228, 185, 90, 0.06);
+  color: var(--gold);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn.yes {
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold) 48%, var(--gold-lo));
+  color: var(--ink);
+  border-color: transparent;
+  box-shadow: 0 0 26px rgba(228, 185, 90, 0.35);
+}
+.btn.yes:hover { transform: translateY(-2px); box-shadow: 0 0 34px rgba(228, 185, 90, 0.55); }
+.btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+.btn.no.flee {
+  position: fixed;
+  z-index: 50;
+  margin: 0;
+  transition: left 0.18s ease, top 0.18s ease, transform 0.18s ease, opacity 0.4s ease;
+}
+.btn.no.gone { opacity: 0; pointer-events: none; }
+.btn.pulse { animation: pulse 1s ease-in-out infinite; }
+@keyframes pulse { 50% { transform: scale(1.06); } }
+.taunt { margin-top: 0.9rem; min-height: 1.65em; color: var(--dim); font-size: 0.86rem; overflow-wrap: anywhere; }
+
+.final { text-align: center; margin-top: 1.2rem; }
+.final .ar { font-family: var(--arabic); direction: rtl; font-size: clamp(2rem, 7vw, 2.8rem); line-height: 2; padding-block: 0.2em; }
+.final .big { margin: 0.2rem 0; font-weight: 700; font-size: 1.05rem; }
+.final .small { margin: 0.2rem 0 0; color: var(--dim); }
+.linkbtn {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0.5rem 0;
+  min-height: 44px;
+  color: var(--dim);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+.linkbtn:hover, .linkbtn:focus-visible { color: var(--gold); outline: none; }
+
+.hint { margin: 0; color: var(--dim); font-size: 0.8rem; text-align: center; letter-spacing: 0.04em; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .btn.pulse, .cursor, .lamp, .flame, .goldtext, .card { animation: none; }
+  .btn.no.flee { transition: none; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="glass" cx="50%" cy="55%" r="60%">
+      <stop offset="0" stop-color="#fff0b8"/>
+      <stop offset="0.55" stop-color="#f0b04a"/>
+      <stop offset="1" stop-color="#b8681c"/>
+    </radialGradient>
+    <symbol id="lantern" viewBox="0 0 60 104">
+      <circle cx="30" cy="4" r="3" fill="none" stroke="#e4b95a" stroke-width="1.4"/>
+      <path d="M18 20 L42 20 L37 10 L23 10 Z" fill="#c99a3c" stroke="#f6e3a1" stroke-width="0.8"/>
+      <path class="flame" d="M15 22 C9 44 11 66 19 80 L41 80 C49 66 51 44 45 22 Z" fill="url(#glass)" stroke="#e4b95a" stroke-width="1.2"/>
+      <path d="M22 22 C18 46 20 66 25 80 M38 22 C42 46 40 66 35 80 M30 22 V80" fill="none" stroke="#8a5a14" stroke-width="0.9" opacity="0.7"/>
+      <path d="M21 80 L39 80 L36 88 L24 88 Z" fill="#c99a3c" stroke="#f6e3a1" stroke-width="0.8"/>
+      <path d="M30 88 V98" stroke="#e4b95a" stroke-width="1"/>
+      <circle cx="30" cy="100" r="2.4" fill="#e4b95a"/>
+    </symbol>
+    <symbol id="corner" viewBox="0 0 32 32">
+      <path d="M1 31 V10 Q1 1 10 1 H31" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M7 26 V13 Q7 7 13 7 H26" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.55"/>
+      <circle cx="5" cy="5" r="1.7" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<div class="lamps" aria-hidden="true">
+  <div class="lamp l1"><div class="cord"></div><svg viewBox="0 0 60 104"><use href="#lantern"/></svg></div>
+  <div class="lamp l2"><div class="cord"></div><svg viewBox="0 0 60 104"><use href="#lantern"/></svg></div>
+  <div class="lamp l3"><div class="cord"></div><svg viewBox="0 0 60 104"><use href="#lantern"/></svg></div>
+  <div class="lamp l4"><div class="cord"></div><svg viewBox="0 0 60 104"><use href="#lantern"/></svg></div>
+</div>
+
+<main class="stage">
+  <section class="card" aria-label="Nikkah invitation">
+    <div class="corner tl" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#corner"/></svg></div>
+    <div class="corner tr" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#corner"/></svg></div>
+    <div class="corner bl" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#corner"/></svg></div>
+    <div class="corner br" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#corner"/></svg></div>
+    <div class="bar">
+      <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <defs><mask id="moon"><rect width="24" height="24" fill="#fff"/><circle cx="14.5" cy="9.5" r="7" fill="#000"/></mask></defs>
+        <circle cx="11" cy="12" r="8" fill="currentColor" mask="url(#moon)"/>
+        <polygon fill="currentColor" points="18,7 18.9,9.1 21,10 18.9,10.9 18,13 17.1,10.9 15,10 17.1,9.1"/>
+      </svg>
+      <span>nikkah.exe &mdash; khola@zohaib</span>
+    </div>
+    <div class="body">
+      <div id="out"></div>
+      <div id="choices" hidden>
+        <div class="choices">
+          <button class="btn yes" id="yes" type="button">[Y] Yes, inshaAllah</button>
+          <span class="slot" id="slot"><button class="btn no" id="no" type="button">[N] No</button></span>
+        </div>
+        <div class="taunt" id="taunt" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+  <p class="hint" id="hint">tap anywhere to skip the typing</p>
+</main>
+
+<script>
+(function () {
+  var CONFIG = {
+    bride: "Khola Raouf",
+    groom: "Zohaib Yaqoob",
+    facts: [["date", "To be confirmed"], ["time", "To be confirmed"], ["venue", "To be confirmed"]],
+    note: "Your presence and duas would mean the world to us."
+  };
+
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var out = document.getElementById("out");
+  var choices = document.getElementById("choices");
+  var yes = document.getElementById("yes");
+  var no = document.getElementById("no");
+  var slot = document.getElementById("slot");
+  var taunt = document.getElementById("taunt");
+  var hint = document.getElementById("hint");
+
+  var skip = reduce, promptReady = false, decided = false;
+  var cursorEl = document.createElement("span");
+  cursorEl.className = "cursor";
+  cursorEl.setAttribute("aria-hidden", "true");
+
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, skip ? 0 : ms); }); }
+
+  async function typeLine(parts, speed) {
+    if (typeof parts === "string") parts = [[parts, ""]];
+    speed = speed || 16;
+    var div = document.createElement("div");
+    div.className = "line";
+    out.appendChild(div);
+    for (var i = 0; i < parts.length; i++) {
+      var span = document.createElement("span");
+      if (parts[i][1]) span.className = parts[i][1];
+      div.appendChild(span);
+      var text = parts[i][0];
+      if (skip) { span.textContent = text; continue; }
+      for (var j = 0; j < text.length; j++) {
+        span.textContent += text[j];
+        div.appendChild(cursorEl);
+        await sleep(speed);
+      }
+    }
+    div.appendChild(cursorEl);
+    return div;
+  }
+
+  function block(cls, build) {
+    cursorEl.remove();
+    var d = document.createElement("div");
+    d.className = cls + " reveal";
+    build(d);
+    out.appendChild(d);
+    return d;
+  }
+
+  function ornament() {
+    block("orn", function (d) {
+      d.appendChild(document.createElement("i"));
+      d.appendChild(document.createElement("b"));
+      d.appendChild(document.createElement("i"));
+    });
+  }
+
+  async function run() {
+    await typeLine([["> ", "prompt"], ["initializing nikkah.exe ...", "dim"]]);
+    await sleep(250);
+    await typeLine([["> ", "prompt"], ["loading blessings ........ ", ""], ["[OK]", "ok"]]);
+    await sleep(150);
+    await typeLine([["> ", "prompt"], ["syncing duas ............. ", ""], ["[OK]", "ok"]]);
+    await sleep(150);
+    await typeLine([["> ", "prompt"], ["searching for a dear friend ... ", ""], ["found", "gold"]]);
+    await sleep(500);
+
+    block("bismillah goldtext", function (d) {
+      d.setAttribute("lang", "ar");
+      d.textContent = "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ";
+    });
+    await sleep(700);
+
+    await typeLine([["> ", "prompt"], ["You are warmly invited to the nikkah of", ""]]);
+    await sleep(300);
+    block("names", function (d) {
+      var a = document.createElement("span"); a.className = "n goldtext"; a.textContent = CONFIG.bride;
+      var m = document.createElement("span"); m.className = "amp"; m.textContent = "&";
+      var b = document.createElement("span"); b.className = "n goldtext"; b.textContent = CONFIG.groom;
+      d.appendChild(a); d.appendChild(m); d.appendChild(b);
+    });
+    await sleep(800);
+    ornament();
+    await sleep(600);
+
+    await typeLine([["> ", "prompt"], ["reading event details ...", "dim"]]);
+    var dl = document.createElement("dl");
+    dl.className = "facts";
+    cursorEl.remove();
+    out.appendChild(dl);
+    for (var i = 0; i < CONFIG.facts.length; i++) {
+      var row = document.createElement("div"); row.className = "row reveal";
+      var dt = document.createElement("dt"); dt.textContent = CONFIG.facts[i][0];
+      var lead = document.createElement("span"); lead.className = "lead";
+      var dd = document.createElement("dd"); dd.textContent = CONFIG.facts[i][1];
+      row.appendChild(dt); row.appendChild(lead); row.appendChild(dd);
+      dl.appendChild(row);
+      await sleep(280);
+    }
+    await sleep(250);
+    await typeLine([["> ", "prompt"], [CONFIG.note, "dim"]], 14);
+    await sleep(500);
+    await typeLine([["> ", "prompt"], ["Will you join us? ", ""], ["[Y/N]", "gold"], [" ", ""]], 24);
+
+    skip = reduce;
+    promptReady = true;
+    hint.hidden = true;
+    choices.hidden = false;
+    choices.classList.add("reveal");
+  }
+
+  /* ---------- skipping the typing ---------- */
+  document.addEventListener("pointerdown", function () { if (!promptReady) skip = true; });
+  document.addEventListener("keydown", function (e) {
+    if (!promptReady) { if (e.key === " " || e.key === "Enter") skip = true; return; }
+    if (decided) return;
+    var k = e.key.toLowerCase();
+    if (k === "y") accept();
+    else if (k === "n") dodge(null, null);
+  });
+
+  /* ---------- the runaway No button ---------- */
+  var fled = false, attempts = 0, lastDodge = 0, margin = 12;
+  var taunts = [
+    "no.exe has stopped responding",
+    "Nice try.",
+    "That button is shy. Try the other one.",
+    "Error 404: decline not found",
+    "Still here? So is the Yes button.",
+    "No has filed for annual leave.",
+    "Everyone says yes. It is basically tradition.",
+    "You are very persistent. Respect.",
+    "One more attempt and No resigns."
+  ];
+
+  function dodge(px, py) {
+    if (decided) return;
+    var now = performance.now();
+    if (now - lastDodge < 150) return;
+    lastDodge = now;
+    attempts++;
+
+    if (!fled) {
+      var r = no.getBoundingClientRect();
+      slot.style.width = r.width + "px";
+      slot.style.height = r.height + "px";
+      no.style.width = r.width + "px";
+      no.style.left = r.left + "px";
+      no.style.top = r.top + "px";
+      no.classList.add("flee");
+      fled = true;
+      void no.offsetWidth;
+    }
+
+    var w = no.offsetWidth, h = no.offsetHeight;
+    var vw = document.documentElement.clientWidth, vh = window.innerHeight;
+    var yr = yes.getBoundingClientRect();
+    var x = margin, y = margin, ok = false;
+    for (var i = 0; i < 40 && !ok; i++) {
+      x = margin + Math.random() * Math.max(0, vw - w - 2 * margin);
+      y = margin + Math.random() * Math.max(0, vh - h - 2 * margin);
+      var overlapsYes = x < yr.right + 24 && x + w > yr.left - 24 && y < yr.bottom + 24 && y + h > yr.top - 24;
+      var nearPointer = px !== null && Math.hypot(x + w / 2 - px, y + h / 2 - py) < 150;
+      ok = !overlapsYes && !nearPointer;
+    }
+    no.style.left = x + "px";
+    no.style.top = y + "px";
+
+    if (attempts > 5) {
+      no.style.transform = "scale(" + Math.max(0.6, 1 - (attempts - 5) * 0.08) + ")";
+    }
+    if (attempts >= 10) { surrender(); return; }
+    taunt.textContent = "declines attempted: " + attempts + "  //  " + taunts[Math.min(attempts - 1, taunts.length - 1)];
+  }
+
+  function surrender() {
+    no.classList.add("gone");
+    no.disabled = true;
+    no.setAttribute("aria-hidden", "true");
+    no.tabIndex = -1;
+    yes.classList.add("pulse");
+    taunt.textContent = "declines attempted: " + attempts + "  //  No has resigned. Only one option remains.";
+  }
+
+  no.addEventListener("pointerdown", function (e) { e.preventDefault(); dodge(e.clientX, e.clientY); });
+  no.addEventListener("pointerenter", function (e) { dodge(e.clientX, e.clientY); });
+  no.addEventListener("focus", function () { dodge(null, null); });
+  no.addEventListener("click", function (e) { e.preventDefault(); dodge(null, null); });
+
+  document.addEventListener("pointermove", function (e) {
+    if (!promptReady || decided || e.pointerType !== "mouse" || no.disabled) return;
+    var r = no.getBoundingClientRect(), pad = 55;
+    if (e.clientX > r.left - pad && e.clientX < r.right + pad && e.clientY > r.top - pad && e.clientY < r.bottom + pad) {
+      dodge(e.clientX, e.clientY);
+    }
+  });
+
+  window.addEventListener("resize", function () {
+    if (!fled) return;
+    var w = no.offsetWidth, h = no.offsetHeight;
+    var vw = document.documentElement.clientWidth, vh = window.innerHeight;
+    no.style.left = Math.min(parseFloat(no.style.left) || 0, Math.max(margin, vw - w - margin)) + "px";
+    no.style.top = Math.min(parseFloat(no.style.top) || 0, Math.max(margin, vh - h - margin)) + "px";
+  });
+
+  /* ---------- saying yes ---------- */
+  yes.addEventListener("click", accept);
+
+  async function accept() {
+    if (decided) return;
+    decided = true;
+    no.classList.add("gone");
+    no.disabled = true;
+    no.setAttribute("aria-hidden", "true");
+    no.tabIndex = -1;
+    choices.hidden = true;
+    skip = reduce;
+    burst();
+
+    await typeLine([["> ", "prompt"], ["Y", "gold"]]);
+    await sleep(200);
+    await typeLine([["> ", "prompt"], ["sending RSVP ........ ", ""], ["[OK]", "ok"]]);
+    await sleep(200);
+    await typeLine([["> ", "prompt"], ["status: ", "dim"], ["ACCEPTED", "gold"]]);
+    await sleep(500);
+
+    block("final", function (d) {
+      var ar = document.createElement("div"); ar.className = "ar goldtext"; ar.setAttribute("lang", "ar");
+      ar.textContent = "جَزَاكَ اللهُ خَيْرًا";
+      var big = document.createElement("p"); big.className = "big"; big.textContent = "JazakAllah khair. See you there, inshaAllah.";
+      var small = document.createElement("p"); small.className = "small";
+      small.textContent = "Khola and Zohaib can't wait to celebrate with you.";
+      d.appendChild(ar); d.appendChild(big); d.appendChild(small);
+    });
+    await sleep(700);
+    await typeLine([["process exited with code 0", "dim"]]);
+    cursorEl.remove();
+
+    var again = document.createElement("button");
+    again.type = "button";
+    again.className = "linkbtn";
+    again.textContent = "replay invitation";
+    again.addEventListener("click", function () { window.location.reload(); });
+    var wrap = document.createElement("div");
+    wrap.className = "final";
+    wrap.appendChild(again);
+    out.appendChild(wrap);
+  }
+
+  /* ---------- sky: drifting stars, falling petals, celebration burst ---------- */
+  var cv = document.getElementById("sky");
+  var ctx = cv.getContext("2d");
+  var W = 0, H = 0, dpr = 1, stars = [], petals = [], bits = [];
+  var burstColors = ["#f2b5c3", "#f9d4dc", "#e4b95a", "#f6e3a1"];
+
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function seed() {
+    stars = []; petals = [];
+    var n = W < 500 ? 24 : 42;
+    for (var i = 0; i < n; i++) {
+      stars.push({ x: Math.random() * W, y: Math.random() * H, r: 1.5 + Math.random() * 4, v: 0.06 + Math.random() * 0.18, t: Math.random() * 6.28 });
+    }
+    var p = W < 500 ? 9 : 16;
+    for (var k = 0; k < p; k++) {
+      petals.push({ x: Math.random() * W, y: Math.random() * H, w: 5 + Math.random() * 5, h: 2.5 + Math.random() * 2.5, rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.02, vy: 0.25 + Math.random() * 0.35, t: Math.random() * 6.28 });
+    }
+  }
+  function drawStar(x, y, r) {
+    ctx.beginPath();
+    for (var i = 0; i < 8; i++) {
+      var a = i * Math.PI / 4 - Math.PI / 2, rad = i % 2 ? r * 0.38 : r;
+      ctx.lineTo(x + Math.cos(a) * rad, y + Math.sin(a) * rad);
+    }
+    ctx.closePath();
+    ctx.fill();
+  }
+  function drawPetal(x, y, w, h, rot) {
+    ctx.save();
+    ctx.translate(x, y); ctx.rotate(rot);
+    ctx.beginPath();
+    ctx.ellipse(0, 0, w, h, 0, 0, 6.2832);
+    ctx.fill();
+    ctx.restore();
+  }
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = "#e4b95a";
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      if (!reduce) { s.y -= s.v; s.t += 0.02; if (s.y < -10) { s.y = H + 10; s.x = Math.random() * W; } }
+      ctx.globalAlpha = 0.14 + 0.22 * (0.5 + 0.5 * Math.sin(s.t));
+      drawStar(s.x, s.y, s.r);
+    }
+    ctx.fillStyle = "#f2b5c3";
+    for (var q = 0; q < petals.length; q++) {
+      var p = petals[q];
+      if (!reduce) {
+        p.t += 0.012; p.y += p.vy; p.x += Math.sin(p.t) * 0.5; p.rot += p.vr;
+        if (p.y > H + 12) { p.y = -12; p.x = Math.random() * W; }
+      }
+      ctx.globalAlpha = 0.32;
+      drawPetal(p.x, p.y, p.w, p.h, p.rot);
+    }
+    for (var j = bits.length - 1; j >= 0; j--) {
+      var b = bits[j];
+      b.vy += 0.12; b.vx *= 0.995; b.x += b.vx; b.y += b.vy; b.rot += b.vr; b.life -= 1;
+      if (b.life <= 0 || b.y > H + 20) { bits.splice(j, 1); continue; }
+      ctx.globalAlpha = Math.min(1, b.life / 30);
+      ctx.fillStyle = b.c;
+      if (b.star) drawStar(b.x, b.y, b.w); else drawPetal(b.x, b.y, b.w, b.h, b.rot);
+    }
+    ctx.globalAlpha = 1;
+    if (!reduce) requestAnimationFrame(frame);
+  }
+  function burst() {
+    if (reduce) return;
+    var cx = W / 2, cy = H * 0.6;
+    for (var i = 0; i < 170; i++) {
+      var a = -Math.PI / 2 + (Math.random() - 0.5) * 2.5, sp = 4 + Math.random() * 8.5;
+      var star = Math.random() < 0.35;
+      bits.push({
+        x: cx, y: cy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp,
+        rot: Math.random() * 6, vr: (Math.random() - 0.5) * 0.3,
+        w: star ? 3 + Math.random() * 4 : 5 + Math.random() * 6, h: 2.5 + Math.random() * 3,
+        star: star, c: star ? "#f6e3a1" : burstColors[(Math.random() * burstColors.length) | 0],
+        life: 100 + Math.random() * 80
+      });
+    }
+  }
+  size(); seed();
+  window.addEventListener("resize", function () { size(); seed(); if (reduce) frame(); });
+  frame();
+
+  run();
+})();
+</script>
+
+</body></html>
